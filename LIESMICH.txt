@@ -7,6 +7,40 @@ Inhalt:
   audio_en.json      automatisch nachgeladen, sobald die
   ... (8 Stück)      jeweilige Sprache gewählt wird)
 
+Neu in dieser Version (Juli 2026):
+  1. Piktogramm-Übersicht: Neuer Button "Alle Piktogramme" unter
+     dem Foto-Button. Zeigt alle 148 Piktogramme als reines
+     Bildraster, nach Kategorien sortiert. Damit ist jedes
+     ausgehängte Piktogramm auch OHNE Text und OHNE Kamera
+     auffindbar – einfach das passende Bild antippen, dann
+     Text in der gewählten Sprache lesen bzw. vorlesen lassen.
+  2. Echte Bilderkennung beim Fotografieren: Bisher wurde nur
+     der TEXT auf dem Schild gelesen (deshalb hat es bei
+     Aushängen ohne Beschriftung nie funktioniert). Jetzt
+     vergleicht die App das Foto zusätzlich direkt mit allen
+     148 Piktogrammen und zeigt sofort die 4 ähnlichsten als
+     antippbare Vorschläge. Die Texterkennung läuft weiterhin
+     zusätzlich und öffnet bei eindeutigem Text direkt den
+     Treffer. Im Vorschlagsdialog gibt es außerdem den Button
+     "Alle Piktogramme" als Rückfallebene.
+     Die Bilderkennung läuft vollständig auf dem Gerät und
+     funktioniert auch offline; nur die Texterkennung braucht
+     beim ersten Aufruf Internet.
+     Tipp fürs Fotografieren: Piktogramm möglichst formatfüllend
+     und gerade aufnehmen.
+
+  3. Bedienung für Menschen, die nicht lesen können:
+     - Nach dem Antippen eines Piktogramms startet das Audio
+       jetzt automatisch – der "Vorlesen"-Knopf muss nicht mehr
+       gefunden und gelesen werden (er bleibt zum Wiederholen).
+     - Der Vorlesen-Knopf pulsiert während der Wiedergabe.
+     - In der Piktogramm-Übersicht gibt es oben eine feste
+       Sprungleiste aus Beispiel-Piktogrammen (eines je
+       Kategorie): antippen springt zum passenden Abschnitt,
+       ohne dass Kategorienamen gelesen werden müssen.
+     - Die Knöpfe im Foto-Dialog tragen Symbole (Raster, X),
+       nicht nur Text.
+
 Bereitstellung über GitHub Pages: siehe beiliegende
 Schritt-für-Schritt-Anleitung (Word-Dokument).
 
@@ -15,9 +49,11 @@ Hinweise:
     zeigt den Text und nutzt, falls vorhanden, die Gerätestimme.
   - Albanisch, Begriff 81 (Fahrradtraining): Aufnahme fehlt derzeit,
     Ersatz über Gerätestimme.
-  - Die Texterkennung (Foto-Funktion) benötigt beim ersten Aufruf
-    eine Internetverbindung.
+  - Wochentags-Piktogramme (Montag–Sonntag) sehen sich zum
+    Verwechseln ähnlich; hier ist der Text auf dem Schild bzw.
+    die Auswahl aus den Vorschlägen entscheidend.
   - Diese Ordnervariante ist für den Betrieb auf einem Webserver
     gedacht. Für Offline-Nutzung (USB-Stick, einzelne Android-
     Geräte) die separate Datei Piktogramm_Audioguide_Komplett.html
-    verwenden.
+    verwenden – diese enthält die Neuerungen noch NICHT und
+    müsste separat aktualisiert werden.
