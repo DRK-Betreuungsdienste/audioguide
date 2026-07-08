@@ -257,18 +257,43 @@ function pickVoice(code){
   return v || null;
 }
 let curAudio = null;
+let _blobUrl = null;
 function stopAudio(){
   if (curAudio){ curAudio.pause(); curAudio = null; }
+  if (_blobUrl){ URL.revokeObjectURL(_blobUrl); _blobUrl = null; }
   if ('speechSynthesis' in window) speechSynthesis.cancel();
 }
-function speak(text){
+
+/* Sprachpakete (audio_de.json etc.) per fetch laden und cachen */
+const PACKS = {};
+function loadPack(lang){
+  if (!PACKS[lang]){
+    PACKS[lang] = fetch('audio_' + lang + '.json')
+      .then(r => r.ok ? r.json() : null).catch(() => null);
+  }
+  return PACKS[lang];
+}
+
+function b64toBlob(b64){
+  const bin = atob(b64);
+  const buf = new Uint8Array(bin.length);
+  for(let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+  return new Blob([buf], {type: 'audio/mpeg'});
+}
+
+async function speak(text){
   stopAudio();
   if (current && current.id){
-    const a = new Audio('mp3/' + current.id + '_' + LANG + '.mp3');
-    curAudio = a;
-    a.onerror = () => ttsSpeak(text);
-    a.play().catch(() => ttsSpeak(text));
-    return;
+    const pack = await loadPack(LANG);
+    const b64 = pack && pack[current.id];
+    if (b64){
+      _blobUrl = URL.createObjectURL(b64toBlob(b64));
+      const a = new Audio(_blobUrl);
+      curAudio = a;
+      a.onerror = () => ttsSpeak(text);
+      a.play().catch(() => ttsSpeak(text));
+      return;
+    }
   }
   ttsSpeak(text);
 }
