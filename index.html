@@ -348,18 +348,40 @@ function score(a, b){           // Dice-Koeffizient auf Bigrammen
 }
 function handleOcr(raw){
   const t = T();
-  const nq = norm(raw);
+  // Sprachlabels und Störwörter entfernen, die auf jedem Schild stehen
+  const STOP = ['deutsch','arabisch','kurdisch','englisch','english','persisch',
+    'franzosisch','albanisch','turkisch','russisch'];
+  let nq = norm(raw);
+  STOP.forEach(w => { nq = nq.replace(new RegExp('\\b'+w+'\\b','g'), ' '); });
+  nq = nq.replace(/\s+/g,' ').trim();
   if (nq.length < 3){ ocrOpen(t.nf, []); return; }
+  const qWords = nq.split(' ').filter(w => w.length >= 3);
+
   const ranked = D.items.map(it => {
     const nd = norm(it.de);
+    const dWords = nd.split(' ').filter(w => w.length >= 3);
     let s = score(nq, nd);
-    if (nq.includes(nd) || nd.includes(nq)) s = Math.max(s, 0.85);
+
+    if (nd.length >= 4 && nq.includes(nd)) s = Math.max(s, 0.95);
+
+    if (dWords.length){
+      let matched = 0;
+      dWords.forEach(dw => {
+        if (qWords.some(qw => qw === dw ||
+            (dw.length >= 4 && qw.includes(dw)) ||
+            (qw.length >= 4 && dw.includes(qw)) ||
+            score(qw, dw) >= 0.82)) matched++;
+      });
+      s = Math.max(s, (matched / dWords.length) * 0.92);
+    }
     return {it, s};
   }).sort((x,y) => y.s - x.s);
-  if (ranked[0].s >= 0.72){
-    ocrClose(); openDetail(ranked[0].it);
-  } else if (ranked[0].s >= 0.35){
-    ocrOpen(t.mean, ranked.slice(0,3).map(r => r.it));
+
+  const best = ranked[0], second = ranked[1] || {s:0};
+  if (best.s >= 0.88 && best.s - second.s >= 0.2){
+    ocrClose(); openDetail(best.it);
+  } else if (best.s >= 0.28){
+    ocrOpen(t.mean, ranked.slice(0,5).map(r => r.it));
   } else {
     ocrOpen(t.nf, []);
   }
