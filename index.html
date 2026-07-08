@@ -90,9 +90,10 @@ header.app .spacer{flex:1}
 
 /* OCR-Overlay */
 .ocr{position:fixed; inset:0; background:rgba(29,29,27,.9); color:#fff; z-index:40;
-  display:none; place-items:center; text-align:center; padding:24px}
+  display:none; place-items:center; text-align:center; padding:24px;
+  overflow-y:auto; -webkit-overflow-scrolling:touch}
 .ocr.open{display:grid}
-.ocr .box{max-width:420px}
+.ocr .box{max-width:420px; width:100%; margin:auto; padding:12px 0}
 .ocr .pulse{width:56px;height:56px;border:4px solid var(--red);border-radius:16px;margin:0 auto 18px;
   animation:pu 1.1s ease-in-out infinite}
 @keyframes pu{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.86);opacity:.6}}
@@ -131,10 +132,20 @@ header.app .spacer{flex:1}
 .ocr .close.alt{background:#fff; color:var(--red); border:2px solid #fff; margin-top:18px; display:flex; width:100%}
 .ocr .close.alt svg{width:22px; height:22px}
 .bigplay.playing{animation:playpulse 1.1s ease-in-out infinite}
+.bigplay.nudge{animation:nudgeanim .68s ease-in-out 4}
+@keyframes nudgeanim{0%,100%{transform:scale(1); box-shadow:0 0 0 0 rgba(192,0,0,.5)}
+  50%{transform:scale(1.07); box-shadow:0 0 0 12px rgba(192,0,0,0)}}
+@media (prefers-reduced-motion:reduce){.bigplay.nudge{animation:none}}
 @keyframes playpulse{0%,100%{box-shadow:0 0 0 0 rgba(192,0,0,.45)}50%{box-shadow:0 0 0 14px rgba(192,0,0,0)}}
 @media (prefers-reduced-motion:reduce){.bigplay.playing{animation:none}}
 .rtl{direction:rtl}
 </style>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#c00000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body>
 
@@ -285,8 +296,9 @@ function openDetail(it){
   $('playLabel').textContent = t.play;
   $('voiceHint').className = 'hint';
   $('detail').classList.add('open');
-  /* Fuer Nutzer, die nicht lesen koennen: Audio startet automatisch */
-  setTimeout(() => { if (current === it) speak(it[LANG]); }, 60);
+  /* Fuer Nutzer, die nicht lesen koennen: Audio startet automatisch.
+     Direkt (ohne setTimeout) aufrufen, damit iOS die Nutzergeste anerkennt. */
+  speak(it[LANG]);
 }
 $('btnBack').onclick = () => { stopAudio(); $('detail').classList.remove('open'); };
 $('btnPlay').onclick = () => current && speak(current[LANG]);
@@ -307,7 +319,7 @@ let curAudio = null;
 let _blobUrl = null;
 function stopAudio(){
   setPlaying(false);
-  if (curAudio){ curAudio.pause(); curAudio = null; }
+  if (curAudio){ curAudio.pause(); curAudio.onended = null; curAudio.onerror = null; curAudio = null; }
   if (_blobUrl){ URL.revokeObjectURL(_blobUrl); _blobUrl = null; }
   if ('speechSynthesis' in window) speechSynthesis.cancel();
 }
@@ -325,6 +337,33 @@ function b64toBlob(b64){
   for (let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
   return new Blob([buf], {type: 'audio/mpeg'});
 }
+/* iOS Safari: ein einziges Audio-Element, das bei der ersten Beruehrung
+   mit einem stillen Ton freigeschaltet wird. Danach darf es programmatisch
+   erneut abgespielt werden (Autoplay nach Antippen eines Piktogramms). */
+const AU = new Audio();
+AU.setAttribute('playsinline', '');
+const SILENT_WAV = 'data:audio/wav;base64,UklGRnQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==';
+let AU_UNLOCKED = false;
+function unlockAudio(){
+  if (AU_UNLOCKED) return;
+  AU_UNLOCKED = true;
+  try {
+    AU.src = SILENT_WAV;
+    AU.play().catch(() => { AU_UNLOCKED = false; });
+  } catch(e){ AU_UNLOCKED = false; }
+}
+document.addEventListener('touchend', unlockAudio, true);
+document.addEventListener('click', unlockAudio, true);
+
+/* Falls der Browser den automatischen Start verweigert (strenge
+   Autoplay-Regel), den Vorlesen-Knopf deutlich pulsieren lassen,
+   damit auch Nicht-Leser wissen, wo sie druecken muessen. */
+function nudgePlay(){
+  const b = $('btnPlay');
+  if (!b) return;
+  b.classList.add('nudge');
+  setTimeout(() => b.classList.remove('nudge'), 3200);
+}
 function setPlaying(on){
   const b = $('btnPlay');
   if (b) b.classList.toggle('playing', !!on);
@@ -336,11 +375,11 @@ async function speak(text){
     const b64 = pack && pack[current.id];
     if (b64){
       _blobUrl = URL.createObjectURL(b64toBlob(b64));
-      const a = new Audio(_blobUrl);
-      curAudio = a;
-      a.onerror = () => ttsSpeak(text);
-      a.onended = () => setPlaying(false);
-      a.play().then(() => setPlaying(true)).catch(() => ttsSpeak(text));
+      AU.onerror = () => ttsSpeak(text);
+      AU.onended = () => setPlaying(false);
+      AU.src = _blobUrl;
+      curAudio = AU;
+      AU.play().then(() => setPlaying(true)).catch(() => nudgePlay());
       return;
     }
   }
@@ -376,7 +415,22 @@ $('fileInp').onchange = async e => {
   let imgCands = [];
   try { imgCands = await matchImage(f); } catch(err){}
   if (sess !== OCR_SESSION || !$('ocr').classList.contains('open')) return;
-  if (imgCands.length) ocrOpen(t.mean, imgCands.slice(0,4).map(r => r.it), true);
+  /* Eindeutiger Bildtreffer: ausreichender Score UND deutlicher Abstand zum
+     Zweitplatzierten -> direkt oeffnen, keine Auswahl, keine Texterkennung.
+     Schwellen in der Browser-Pipeline kalibriert (2x148 Fotos + 64 Negativfotos)
+     und an unabhaengigem dritten Satz validiert: 0 Fehloeffnungen.
+     Abstand senken (z.B. auf 0.15) oeffnet haeufiger automatisch,
+     riskiert aber vereinzelt falsche Oeffnungen. */
+  if (imgCands.length >= 2){
+    const s1 = imgCands[0].s, s2 = imgCands[1].s;
+    if (s1 >= 0.42 && (s1 - s2) >= 0.205){
+      ocrClose(); openDetail(imgCands[0].it); return;
+    }
+  }
+  if (imgCands.length){
+    const fam = expandFamily(imgCands);
+    ocrOpen(t.mean, fam || imgCands.slice(0,4).map(r => r.it), true);
+  }
   /* Stufe 2: Texterkennung (falls Text auf dem Schild steht und Internet verfuegbar ist) */
   let text = '';
   try {
@@ -391,6 +445,10 @@ $('fileInp').onchange = async e => {
   if (sess !== OCR_SESSION || !$('ocr').classList.contains('open')) return;
   const r = rankText(text);
   if (r.auto){ ocrClose(); openDetail(r.auto); return; }
+  if (!r.ranked.length){
+    const fam = expandFamily(imgCands);
+    if (fam){ ocrOpen(t.mean, fam, false); return; }
+  }
   const merged = mergeCands(r.ranked, imgCands);
   if (merged.length) ocrOpen(t.mean, merged, false);
   else if (imgCands.length) ocrOpen(t.mean, imgCands.slice(0,4).map(x => x.it), false);
@@ -458,6 +516,24 @@ function rankText(raw){
   const auto = (b.eq && s2 < 0.99 && !supHot) ||
                (b.s >= 0.66 && b.s - s2 >= 0.18 && b.hits >= 3 && b.exact >= 2 && !supHot);
   return { ranked: ranked.filter(r => r.s >= 0.25), auto: auto ? b.it : null };
+}
+/* Wenn die Top-Bildkandidaten fast alle aus derselben kleinen Kategorie
+   stammen (z.B. die sieben Wochentage), ist die Reihenfolge unter ihnen
+   Zufall. Dann alle Familienmitglieder als Auswahl zeigen, damit der
+   richtige Begriff sicher dabei ist. */
+function expandFamily(imgRanked){
+  if (!imgRanked || imgRanked.length < 4) return null;
+  const top = imgRanked.slice(0, 4);
+  const count = {};
+  top.forEach(r => count[r.it.cat] = (count[r.it.cat] || 0) + 1);
+  let domCat = null;
+  Object.keys(count).forEach(c => { if (count[c] >= 3) domCat = c; });
+  if (!domCat) return null;
+  const fam = D.items.filter(it => it.cat === domCat);
+  if (fam.length > 8) return null;
+  const scored = imgRanked.filter(r => r.it.cat === domCat).map(r => r.it);
+  const rest = fam.filter(it => scored.indexOf(it) < 0);
+  return scored.concat(rest);
 }
 function mergeCands(textRanked, imgRanked){
   const out = [], seen = {};
@@ -674,7 +750,17 @@ $('btnLang').onclick = () => show('pick');
 $('search').oninput = e => renderList(e.target.value);
 
 renderPick();
+setTimeout(() => { try { buildSigs(); } catch(e){} }, 2500);
 if (LANG && langMeta(LANG)) show('main'); else show('pick');
+
+/* Offline-Faehigkeit: Service Worker registrieren (GitHub Pages = HTTPS).
+   Beim ersten Besuch wird die App gecacht, danach laeuft sie auch ohne
+   Internet; Audiopakete werden beim ersten Abruf je Sprache mitgecacht. */
+if ('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

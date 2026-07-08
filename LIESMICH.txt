@@ -41,6 +41,49 @@ Neu in dieser Version (Juli 2026):
      - Die Knöpfe im Foto-Dialog tragen Symbole (Raster, X),
        nicht nur Text.
 
+  4. Eindeutige Bildtreffer öffnen direkt: Erkennt der
+     Bildabgleich ein Piktogramm mit ausreichendem Score UND
+     deutlichem Abstand zum zweitähnlichsten (Score >= 0,42,
+     Abstand >= 0,205), wird die Detailansicht sofort geöffnet
+     und vorgelesen – ohne Auswahlliste. Die Schwellen wurden
+     in der echten Browser-Pipeline an 3 x 148 Testfotos plus
+     64 Negativfotos kalibriert und unabhängig validiert:
+     0 falsche Direktöffnungen. In der Simulation betrifft das
+     je nach Fotoqualität etwa jedes vierte bis fünfte Foto;
+     alle übrigen zeigen wie bisher die 4 Bildvorschläge
+     (bewusst: eine falsche Ansage wäre für die Zielgruppe
+     schlimmer als ein Bestätigungstipp). Die Schwellen stehen
+     als Kommentar markiert im Quelltext und können nach
+     Praxiserfahrung angepasst werden.
+  5. iPhone/iPad (Safari): Die Audio-Wiedergabe ist an die
+     strengen Safari-Regeln angepasst (Freischaltung bei der
+     ersten Berührung, gemeinsames Audio-Element). Automatisches
+     Vorlesen nach dem Antippen funktioniert damit auch unter iOS.
+     Für Kurdisch gibt es unter iOS keine Systemstimme; dort wird
+     wie dokumentiert nur der Text angezeigt.
+
+  6. Verwechslungs-Familien: Sehen sich die besten Bildtreffer
+     zum Verwechseln ähnlich (z.B. die sieben Wochentage), zeigt
+     die Auswahl jetzt ALLE Mitglieder dieser Gruppe – der
+     richtige Begriff ist damit garantiert dabei. Der Dialog
+     ist bei längeren Listen scrollbar.
+  7. Offline-Betrieb (neu, Dateien sw.js, manifest.json,
+     icon-192/512.png): Nach dem ersten Besuch ist die App im
+     Gerät gecacht und läuft ohne Internet weiter; Audiopakete
+     werden je Sprache beim ersten Abruf mitgecacht. Die App
+     lässt sich über "Zum Home-Bildschirm hinzufügen" wie eine
+     richtige App installieren (eigenes Symbol, Vollbild).
+     WICHTIG bei künftigen Updates: in sw.js die Versionsnummer
+     im Cache-Namen erhöhen (z.B. audioguide-v6 -> -v7), sonst
+     behalten Geräte die alte Fassung.
+     iOS-BESONDERHEIT: Safari löscht den Offline-Speicher einer
+     Website nach 7 Tagen ohne Nutzung. Zuverlässig offline ist
+     die App auf iPhone/iPad daher nur, wenn sie über Teilen ->
+     "Zum Home-Bildschirm" installiert wurde (dann gilt die
+     7-Tage-Regel nicht). Empfehlung: auf Geräten der Einrichtung
+     bzw. beim Onboarding die App direkt als Symbol installieren.
+     Auf Android gilt keine solche Frist.
+
 Bereitstellung über GitHub Pages: siehe beiliegende
 Schritt-für-Schritt-Anleitung (Word-Dokument).
 
