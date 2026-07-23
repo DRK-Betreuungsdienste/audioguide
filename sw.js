@@ -1,4 +1,4 @@
-const CACHE = 'audioguide-v7';
+const CACHE = 'audioguide-v8';
 const CORE = ['./', './index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
