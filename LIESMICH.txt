@@ -1,23 +1,30 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
+Stand: 22.07.2026 (nach Korrekturlauf + Kurdisch-Aufnahmen)
 
-Inhalt:
-  index.html       – die App (Texte, Piktogramme, Logo eingebaut)
-  audio_de.json    – Sprachpaket Deutsch (wird von der App
-  audio_en.json      automatisch nachgeladen, sobald die
-  ... (8 Stück)      jeweilige Sprache gewählt wird)
+Inhalt (15 Dateien – bitte immer ALLE zusammen hochladen):
+  index.html       – die App (korrigierte Texte, Piktogramme, Logo,
+                     Foto-Erkennung, QR-Direktlinks #p001–#p148)
+  audio_*.json     – 9 Sprachpakete (de, en, ar, fa, fr, ku, ru, sq, tr);
+                     werden von der App automatisch nachgeladen
+  sw.js            – Offline-Funktion: App speichert sich nach dem
+  manifest.json      ersten Besuch selbst auf dem Gerät
+  icon-192.png     – App-Symbol für "Zum Startbildschirm hinzufügen"
+  icon-512.png
 
-Bereitstellung über GitHub Pages: siehe beiliegende
-Schritt-für-Schritt-Anleitung (Word-Dokument).
+Neu in diesem Stand:
+  - Kurdisch (Kurmandschi) hat jetzt ECHTE Sprachaufnahmen der
+    Kolleginnen und Kollegen (audio_ku.json) – alle 148 Begriffe.
+  - Albanisch Begriff 81 ist vorhanden (früherer Ausfall behoben).
+  - Alle 362 Übersetzungskorrekturen aus dem Korrekturlauf sind in
+    Texten, Suche und Audios eingearbeitet.
+  - QR-Codes auf den Schildern öffnen direkt den richtigen Begriff.
 
 Hinweise:
-  - Kurdisch (Kurmandschi): kein Sprachpaket verfügbar; die App
-    zeigt den Text und nutzt, falls vorhanden, die Gerätestimme.
-  - Albanisch, Begriff 81 (Fahrradtraining): Aufnahme fehlt derzeit,
-    Ersatz über Gerätestimme.
   - Die Texterkennung (Foto-Funktion) benötigt beim ersten Aufruf
-    eine Internetverbindung.
-  - Diese Ordnervariante ist für den Betrieb auf einem Webserver
-    gedacht. Für Offline-Nutzung (USB-Stick, einzelne Android-
-    Geräte) die separate Datei Piktogramm_Audioguide_Komplett.html
-    verwenden.
+    eine Internetverbindung (lädt einmalig die Sprachmodelle).
+  - Diese Ordnervariante ist für den Betrieb über GitHub Pages
+    gedacht. Für Offline-Nutzung (USB-Stick, einzelne Geräte) die
+    separate Datei Piktogramm_Audioguide_Komplett.html verwenden.
+  - WICHTIG: Repository und Organisation bei GitHub niemals
+    umbenennen – die gedruckten QR-Codes hängen an dieser Adresse.
