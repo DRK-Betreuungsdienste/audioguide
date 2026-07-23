@@ -1,21 +1,20 @@
 {
-  "name": "Piktogramm-Audioguide",
-  "short_name": "Audioguide",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#c00000",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+ "name": "Piktogramm-Audioguide",
+ "short_name": "Audioguide",
+ "start_url": "./",
+ "display": "standalone",
+ "background_color": "#FFFFFF",
+ "theme_color": "#C00000",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
 }
