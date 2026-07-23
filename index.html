@@ -273,6 +273,7 @@ function openDetail(it){
   $('playLabel').textContent = t.play;
   $('voiceHint').className = 'hint';
   $('detail').classList.add('open');
+  speak(it[LANG]);
 }
 $('btnBack').onclick = () => { stopAudio(); $('detail').classList.remove('open'); };
 $('btnPlay').onclick = () => current && speak(current[LANG]);
@@ -322,7 +323,10 @@ async function speak(text, rate){
       curAudio = a;
       if (rate){ a.playbackRate = rate; try{ a.preservesPitch = true; }catch(e){} }
       a.onerror = () => ttsSpeak(text, rate);
-      a.play().catch(() => ttsSpeak(text, rate));
+      a.play().catch(err => {
+        if (err && err.name === 'NotAllowedError') return;
+        ttsSpeak(text, rate);
+      });
       return;
     }
   }
