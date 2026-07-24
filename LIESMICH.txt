@@ -28,3 +28,9 @@ Hinweise:
     separate Datei Piktogramm_Audioguide_Komplett.html verwenden.
   - WICHTIG: Repository und Organisation bei GitHub niemals
     umbenennen – die gedruckten QR-Codes hängen an dieser Adresse.
+
+
+NEU IN VERSION 13:
+Tipp auf einen roten Kategorie-Balken (z. B. REGELN) oeffnet eine
+Bilder-Ansicht nur mit den Piktogrammen dieser Kategorie.
+Bild antippen = Begriff oeffnet sich und wird vorgelesen.
