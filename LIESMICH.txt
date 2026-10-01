@@ -1,36 +1,45 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: 22.07.2026 (nach Korrekturlauf + Kurdisch-Aufnahmen)
+Stand: Version 27 · 01.10.2026 (neue KI-Bilderkennung)
 
-Inhalt (15 Dateien – bitte immer ALLE zusammen hochladen):
-  index.html       – die App (korrigierte Texte, Piktogramme, Logo,
-                     Foto-Erkennung, QR-Direktlinks #p001–#p148)
+Inhalt (jetzt 21 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
+  index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
+                     QR-Direktlinks #p001–#p148)
   audio_*.json     – 9 Sprachpakete (de, en, ar, fa, fr, ku, ru, sq, tr);
                      werden von der App automatisch nachgeladen
   sw.js            – Offline-Funktion: App speichert sich nach dem
   manifest.json      ersten Besuch selbst auf dem Gerät
   icon-192.png     – App-Symbol für "Zum Startbildschirm hinzufügen"
   icon-512.png
+  modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
+                     zusammen ca. 25 MB). Der ganze Ordner muss mit
+                     hochgeladen werden, Name "modell" beibehalten!
 
-Neu in diesem Stand:
-  - Kurdisch (Kurmandschi) hat jetzt ECHTE Sprachaufnahmen der
-    Kolleginnen und Kollegen (audio_ku.json) – alle 148 Begriffe.
-  - Albanisch Begriff 81 ist vorhanden (früherer Ausfall behoben).
-  - Alle 362 Übersetzungskorrekturen aus dem Korrekturlauf sind in
-    Texten, Suche und Audios eingearbeitet.
-  - QR-Codes auf den Schildern öffnen direkt den richtigen Begriff.
+Neu in Version 27:
+  - Die Bilderkennung nutzt jetzt ein kleines neuronales Netz
+    (MobileNet), das komplett im Browser läuft – auch offline.
+    Auf den 50 Testfotos aus Bonn: 45 von 50 richtig auf Platz 1,
+    47 von 50 unter den ersten drei Vorschlägen.
+    (Vorher mit der alten Technik: 9 von 50.)
+  - Bei eindeutigen Treffern öffnet die App den Begriff direkt und
+    zeigt "Bild per KI-Modell erkannt" an. Bei Zwillings-Schildern
+    (gleiche Grafik, z. B. Verbotsschilder) zeigt sie wie bisher
+    die Auswahl.
+  - Fehler behoben: Die Bildprüfung lief bisher gar nicht, wenn auf
+    dem Foto kein Text lesbar war – jetzt läuft sie immer.
+  - QR-Code bleibt der schnellste und sicherste Weg (im Bonner Test
+    50 von 50 richtig) und wird weiterhin zuerst geprüft.
 
 Hinweise:
+  - Beim ersten Besuch lädt die App das KI-Modell (ca. 25 MB) im
+    Hintergrund und speichert es auf dem Gerät. Danach funktioniert
+    die Bilderkennung auch ohne Internet.
   - Die Texterkennung (Foto-Funktion) benötigt beim ersten Aufruf
-    eine Internetverbindung (lädt einmalig die Sprachmodelle).
+    weiterhin eine Internetverbindung (lädt einmalig Sprachmodelle).
   - Diese Ordnervariante ist für den Betrieb über GitHub Pages
     gedacht. Für Offline-Nutzung (USB-Stick, einzelne Geräte) die
-    separate Datei Piktogramm_Audioguide_Komplett.html verwenden.
+    separate Datei Piktogramm_Audioguide_Komplett.html verwenden
+    (dort ist die Bilderkennung die bisherige einfache Variante,
+    damit die Datei nicht um 25 MB wächst).
   - WICHTIG: Repository und Organisation bei GitHub niemals
     umbenennen – die gedruckten QR-Codes hängen an dieser Adresse.
-
-
-NEU IN VERSION 13:
-Tipp auf einen roten Kategorie-Balken (z. B. REGELN) oeffnet eine
-Bilder-Ansicht nur mit den Piktogrammen dieser Kategorie.
-Bild antippen = Begriff oeffnet sich und wird vorgelesen.

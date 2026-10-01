@@ -1,8 +1,23 @@
-const CACHE = 'audioguide-v26';
+const CACHE = 'audioguide-v27';
 const CORE = ['./', './index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
+/* KI-Modell: gross, darum best-effort vorladen (Installation scheitert nie daran) */
+const MODELL = [
+  'modell/ort.wasm.min.js',
+  'modell/ort-wasm-simd-threaded.mjs',
+  'modell/ort-wasm-simd-threaded.wasm',
+  'modell/mobilenetv2.onnx',
+  'modell/ref_emb_i8.bin',
+  'modell/ref_emb_meta.json'
+];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(CORE).then(() =>
+        Promise.allSettled(MODELL.map(u => c.add(u)))
+      ))
+      .then(() => self.skipWaiting())
+  );
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys =>
