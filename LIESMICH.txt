@@ -1,11 +1,11 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 27 · 01.10.2026 (neue KI-Bilderkennung)
+Stand: Version 28 · 02.10.2026 (neue Sprache Chinesisch + KI-Bilderkennung)
 
-Inhalt (jetzt 21 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
+Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
                      QR-Direktlinks #p001–#p148)
-  audio_*.json     – 9 Sprachpakete (de, en, ar, fa, fr, ku, ru, sq, tr);
+  audio_*.json     – 10 Sprachpakete (de, en, ar, fa, fr, ku, ru, sq, tr, zh);
                      werden von der App automatisch nachgeladen
   sw.js            – Offline-Funktion: App speichert sich nach dem
   manifest.json      ersten Besuch selbst auf dem Gerät
@@ -14,6 +14,11 @@ Inhalt (jetzt 21 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 28:
+  - Zehnte Sprache: Chinesisch (vereinfacht) – alle 148 Begriffe mit
+    Text und Sprachausgabe (audio_zh.json), eigene Kachel auf dem
+    Sprachwahl-Bildschirm, Suche versteht chinesische Zeichen.
 
 Neu in Version 27:
   - Die Bilderkennung nutzt jetzt ein kleines neuronales Netz
