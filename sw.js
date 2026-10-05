@@ -1,4 +1,4 @@
-const CACHE = 'audioguide-v29';
+const CACHE = 'audioguide-v30';
 const CORE = ['./', './index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 /* KI-Modell: gross, darum best-effort vorladen (Installation scheitert nie daran) */
 const MODELL = [

@@ -1,10 +1,11 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 29 · 05.10.2026 (neues Piktogramm Männercafé, p149)
+Stand: Version 30 · 05.10.2026 (neue Piktogramme Gewaltschutz p150 und
+       Sozialfachkraftberatung p151)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
-                     QR-Direktlinks #p001–#p149)
+                     QR-Direktlinks #p001–#p151)
   audio_*.json     – 10 Sprachpakete (de, en, ar, fa, fr, ku, ru, sq, tr, zh);
                      werden von der App automatisch nachgeladen
   sw.js            – Offline-Funktion: App speichert sich nach dem
@@ -14,6 +15,20 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 30: Gewaltschutz (p150) und Sozialfachkraftberatung (p151)
+  - Zwei neue Piktogramme für die ZUE Bonn (Kategorie Beratung &
+    Verwaltung), mit Bild, Text und Sprachausgabe in allen 10 Sprachen.
+    Die gedruckten Schilder (QR-Codes auf #p150 und #p151) öffnen die
+    Begriffe direkt.
+  - Gewaltschutz-Symbol: Kombination der fünf Schutz-Symbole der
+    UN OCHA Humanitarian Icons (CC0, gemeinfrei) in DRK-Rot.
+  - Die Übersetzungen für Chinesisch und Kurdisch werden noch von
+    Muttersprachlern geprüft (Prüfliste). Die Sprachausgabe der beiden
+    neuen Begriffe ist vorläufig mit Sprachsynthese erstellt und wird
+    nach der Prüfung bei Bedarf ersetzt.
+  - Die KI-Bilderkennung kennt beide Motive (je 3 zusätzliche
+    Referenzen in modell/).
 
 Neu in Version 29: Männercafé (p149)
   - Neues Piktogramm p149 „Männercafé" (Kategorie Räume & Angebote) mit
