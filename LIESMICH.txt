@@ -1,7 +1,7 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 30 · 05.10.2026 (neue Piktogramme Gewaltschutz p150 und
-       Sozialfachkraftberatung p151)
+Stand: Version 31 · 20.10.2026 (kurdische Aufnahmen für Gewaltschutz p150
+       und Sozialfachkraftberatung p151)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -15,6 +15,13 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 31:
+  - Kurdisch: Die Ansagen für Gewaltschutz (p150) und
+    Sozialfachkraftberatung (p151) sind jetzt echte Aufnahmen aus der
+    ZUE Bonn statt Sprachsynthese.
+  - Prüfliste aus Bonn zurück: alle Sprachen außer Chinesisch bestätigt,
+    keine Textänderungen nötig. Chinesisch folgt.
 
 Neu in Version 30: Gewaltschutz (p150) und Sozialfachkraftberatung (p151)
   - Zwei neue Piktogramme für die ZUE Bonn (Kategorie Beratung &
