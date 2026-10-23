@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 32 · 22.10.2026 (chinesische Korrekturen aus der ZUE Bonn)
+Stand: Version 33 · 23.10.2026 (sechs chinesische Aufnahmen aus der ZUE Bonn)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,17 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 33:
+  - Chinesisch: Die sechs als „falsch vorgelesen“ gemeldeten Ansagen
+    (p068 Ladestation, p122 Essensraum, p130 Heißes Wasser, p136 Frauen,
+    p138 Mädchen, p140 Ausgang) sind jetzt echte Aufnahmen aus der
+    ZUE Bonn. Die 21 Begriffe mit geändertem Text laufen weiterhin
+    mit Sprachsynthese, bis Aufnahmen dafür vorliegen.
+  - Bonn hat bestätigt: Die Korrektur „禁止对女性施加暴力“ gehört zu
+    p036 „Keine Gewalt gegen Frauen!“ (so bereits in Version 32).
+  - Neu im Ordner aufnahme/: Aufnahme-App Chinesisch (chinesisch_v2.html)
+    für PC, Android und iPhone – gehört nicht zur eigentlichen App.
 
 Neu in Version 32:
   - Chinesisch: 21 Texte nach der Prüfung durch eine Muttersprachlerin
