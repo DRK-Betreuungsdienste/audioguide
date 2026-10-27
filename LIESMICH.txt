@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 34 · 26.10.2026 (18 weitere chinesische Aufnahmen aus der ZUE Bonn)
+Stand: Version 35 · 27.10.2026 (Komplettprüfung vor dem Versand, Ton vereinheitlicht)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,21 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 35 (Komplettprüfung vor dem Versand an die Einrichtungen):
+  - Alle 1510 Ansagen technisch vereinheitlicht: gleiche Lautstärke
+    (−18 LUFS, vorher bis zu 9 dB Unterschied innerhalb einer Sprache),
+    mindestens 120 ms Vorlauf (131 chinesische Ansagen begannen ohne
+    Vorlauf, erste Silbe konnte angeschnitten werden) und 250 ms
+    Nachlauf. Die Stimmen selbst sind unverändert.
+  - Geprüft ohne Befund: 151 Einträge in 10 Sprachen, alle Bilder,
+    alle 151 QR-Direktlinks, Suche, Kategorien, Sprachwechsel,
+    Live-Seite mit allen Paketen und KI-Modell.
+  - Canva-Schilder gegen die App-Texte abgeglichen (alle 151 Seiten,
+    10 Sprachen) und korrigiert: kaputte arabische/persische Zeichen
+    auf S. 7, 8, 11, 22, 23, 33, 62, 133; falscher kurdischer Text
+    auf S. 51; veraltete Übersetzungen auf S. 2, 55, 56, 63–66, 71,
+    74, 81, 103, 138, 148.
 
 Neu in Version 34:
   - Chinesisch: 18 der 21 Begriffe mit geändertem Text sind jetzt echte
