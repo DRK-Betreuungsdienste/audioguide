@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 35 · 27.10.2026 (Komplettprüfung vor dem Versand, Ton vereinheitlicht)
+Stand: Version 36 · 04.11.2026 (Chinesisch komplett mit echten Aufnahmen)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,13 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 36:
+  - Chinesisch: Die letzten drei Begriffe mit geändertem Text sind jetzt
+    echte Aufnahmen aus der ZUE Bonn (p027 Zeiten Postausgabe, p036 Keine
+    Gewalt gegen Frauen, p081 Fahrradtraining). Damit sind alle 27 von
+    Bonn geprüften bzw. korrigierten chinesischen Begriffe eingesprochen;
+    die übrigen 124 laufen weiter mit Sprachsynthese.
 
 Neu in Version 35 (Komplettprüfung vor dem Versand an die Einrichtungen):
   - Alle 1510 Ansagen technisch vereinheitlicht: gleiche Lautstärke
