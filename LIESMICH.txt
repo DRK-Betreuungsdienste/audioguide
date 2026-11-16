@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 37 · 10.11.2026 (p002 „Verboten“ benennt jetzt, was verboten ist)
+Stand: Version 38 · 16.11.2026 (Schild 2: Übersetzungen aus Bonn bestätigt, vier neue Aufnahmen)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,14 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 38:
+  - Schild 2 „Verboten: Rauchen, Alkohol, Drogen, Waffen!“: Die ZUE Bonn
+    hat alle neun Übersetzungen bestätigt (Prüfliste vom 10.11., keine
+    Korrekturen).
+  - Vier Ansagen dazu sind jetzt echte Aufnahmen aus Bonn: Kurdisch,
+    Chinesisch, Arabisch (die Sprachsynthese hatte das letzte Wort
+    abgeschnitten) und Albanisch (bisher nur „Verboten!“).
 
 Neu in Version 37:
   - p002 „Verboten!“ heißt jetzt in allen 10 Sprachen „Verboten: Rauchen,
