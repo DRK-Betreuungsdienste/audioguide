@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 38 · 16.11.2026 (Schild 2: Übersetzungen aus Bonn bestätigt, vier neue Aufnahmen)
+Stand: Version 39 · 17.11.2026 (Schild 38: neue Rufnummer des Hilfetelefons)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,12 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 39:
+  - Schild 38 „Hilfetelefon für Frauen“: Das Bild zeigt jetzt die
+    aktuelle Rufnummer 116 016 (bisher 08000 116 016). Hinweis aus der
+    NU Gütersloh. Gleiche Änderung auf dem Canva-Schild Seite 38.
+    Texte und Ansagen sind unverändert (sie nennen keine Nummer).
 
 Neu in Version 38:
   - Schild 2 „Verboten: Rauchen, Alkohol, Drogen, Waffen!“: Die ZUE Bonn
