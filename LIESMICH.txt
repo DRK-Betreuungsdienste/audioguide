@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 39 · 17.11.2026 (Schild 38: neue Rufnummer des Hilfetelefons)
+Stand: Version 40 · 23.11.2026 (einheitliche Verbotsschilder und Männer-Piktogramme)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,17 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 40:
+  - Einheitliche Bildsprache nach Hinweis aus Bielefeld (Südring):
+    Die Schilder 15 (Haustiere), 16 (Elektrogeräte), 17, 18, 20, 25 und
+    26 haben jetzt denselben Verbotskreis (gleiche Dicke, gleiches Rot)
+    wie die übrigen Verbotsschilder.
+  - Alleinreisende Männer werden auf den Schildern 17 bis 20 durchgehend
+    mit demselben Piktogramm dargestellt (Schild 19 im grünen Kreis,
+    Schild 20 im Verbotskreis; bisher grüne Silhouetten bzw. ein Foto).
+  - Gleiche Änderungen in der Schilder-Datei (Version 5) und in Canva.
+    Texte und Ansagen sind unverändert.
 
 Neu in Version 39:
   - Schild 38 „Hilfetelefon für Frauen“: Das Bild zeigt jetzt die
