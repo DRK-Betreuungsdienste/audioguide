@@ -1,6 +1,6 @@
 Piktogramm-Audioguide – Bereitstellung
 =======================================
-Stand: Version 40 · 23.11.2026 (einheitliche Verbotsschilder und Männer-Piktogramme)
+Stand: Version 41 · 26.11.2026 (Schild 54: Piktogramm Taschengeld neu gezeichnet)
 
 Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   index.html       – die App (Texte, Piktogramme, Logo, Foto-Erkennung,
@@ -14,6 +14,13 @@ Inhalt (jetzt 22 Dateien in 2 Ordnern – bitte immer ALLES zusammen hochladen):
   modell/          – NEU: Ordner mit der KI-Bilderkennung (6 Dateien,
                      zusammen ca. 25 MB). Der ganze Ordner muss mit
                      hochgeladen werden, Name "modell" beibehalten!
+
+Neu in Version 41:
+  - Schild 54 „Auszahlung von Taschengeld“: Piktogramm neu gezeichnet.
+    Die Zahlen 50, 20 und 5 stehen jetzt in den Münzen (vorher daneben),
+    und „EURO“ steht vollständig im Geldschein. Hinweis aus der NU
+    Gütersloh. Gleiche Änderung in der Schilder-Datei (Version 7) und
+    in Canva. Texte und Ansagen sind unverändert.
 
 Neu in Version 40:
   - Einheitliche Bildsprache nach Hinweis aus Bielefeld (Südring):
